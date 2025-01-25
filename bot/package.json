@@ -3,8 +3,8 @@
   "scripts": {
     "prestart": "npx kill-port 3000",
     "start": "node dist/index.js",
-    "dev": "nodemon index.ts",
-    "build": "rimraf ./dist && tsc"
+    "build": "tsc",
+    "dev": "nodemon index.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
