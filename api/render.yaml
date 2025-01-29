@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: coolfrog-api
@@ -19,4 +20,27 @@ services:
       - key: DB_USERNAME
         value: root
       - key: DB_PASSWORD
+=======
+services:
+  - type: web
+    name: coolfrog-api
+    runtime: docker
+    env: php
+    buildCommand: "./build.sh"
+    startCommand: "apache2-foreground"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_DEBUG
+        value: false
+      - key: DB_HOST
+        value: 127.0.0.1
+      - key: DB_DATABASE
+        value: mysql
+      - key: DB_USERNAME
+        value: root
+      - key: DB_PASSWORD
+>>>>>>> 722f611a9a02a9fa28c074c9bb9e75d85b08397b
         value: 753075Cd+
