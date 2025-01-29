@@ -1,9 +1,10 @@
 services:
   - type: web
     name: coolfrog-api
-    runtime: php
-    buildCommand: composer install --no-dev --optimize-autoloader && php artisan migrate --seed
-    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    runtime: docker
+    env: php
+    buildCommand: "./build.sh"
+    startCommand: "apache2-foreground"
     envVars:
       - key: APP_ENV
         value: production
@@ -11,5 +12,11 @@ services:
         generateValue: true
       - key: APP_DEBUG
         value: false
-      - key: LOG_CHANNEL
-        value: stderr
+      - key: DB_HOST
+        value: your-database-host
+      - key: DB_DATABASE
+        value: your-database-name
+      - key: DB_USERNAME
+        value: your-database-user
+      - key: DB_PASSWORD
+        value: your-database-password
