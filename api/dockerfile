@@ -1,8 +1,8 @@
 # Use the official PHP image with Apache
-FROM php:8.2-apache
+FROM php:8.2-Cli
 
 # Set the working directory
-WORKDIR /var/www/html
+WORKDIR /app
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -20,7 +20,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install
 
 # Set permissions for Laravel storage and bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
@@ -29,4 +29,4 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 80
 
 # Start Apache
-CMD ["apache2-foreground"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
