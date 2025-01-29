@@ -13,10 +13,10 @@ services:
       - key: APP_DEBUG
         value: false
       - key: DB_HOST
-        value: your-database-host
+        value: 127.0.0.1
       - key: DB_DATABASE
-        value: your-database-name
+        value: mysql
       - key: DB_USERNAME
-        value: your-database-user
+        value: root
       - key: DB_PASSWORD
-        value: your-database-password
+        value: 753075Cd+
