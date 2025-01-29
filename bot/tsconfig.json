@@ -17,6 +17,10 @@
       "*": ["node_modules/*", "src/types/*"]
     }
   },
+<<<<<<< HEAD
   "include": ["src/**/*"],
+=======
+  "include": ["./**/*"],
+>>>>>>> 37845c8a6f093f32ae09d4ecf89fca3e9ec06aa7
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
