@@ -2,11 +2,15 @@
 FROM php:8.2-apache
 
 # Install dependencies and add GPG keys
+RUN apt-get update && apt-get install -y gnupg curl
+
+RUN apt-key adv --keyserver hkps://keys.openpgp.org --recv-keys 0E98404D386FA1D9 \
+    && apt-key adv --keyserver hkps://keys.openpgp.org --recv-keys 6ED0E7B82643E131 \
+    && apt-key adv --keyserver hkps://keys.openpgp.org --recv-keys F8D2585B8783D481 \
+    && apt-key adv --keyserver hkps://keys.openpgp.org --recv-keys 54404762BBB6E853 \
+    && apt-key adv --keyserver hkps://keys.openpgp.org --recv-keys BDE6D2B9216EC7A8
+
 RUN apt-get update && apt-get install -y \
-    gnupg \
-    curl \
-    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
-    && apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
     && docker-php-ext-install zip pdo_mysql
